@@ -1,4 +1,4 @@
-# Autodesk APS GraphQL Documentation - AEC Data Model and Data Exchange APIs
+# Autodesk APS GraphQL Documentation - AEC Data Model 
 
 > The AEC Data Model API is a GraphQL-based API that provides the ability to directly interact with granular AEC data in the cloud without the need of building custom plug-ins for the desktop authoring tools like Revit, Civil 3D, Plant3D and other AEC connected design applications.
 
