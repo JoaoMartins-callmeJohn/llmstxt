@@ -36,6 +36,9 @@
    - [Property and Reference Management](#property-and-reference-management)
 
 ### 6. [API Reference](#api-reference)
+   - [Object Field Reference](#object-field-reference)
+   - [Query Building Patterns](#query-building-patterns)
+   - [Field Discovery and Introspection](#field-discovery-and-introspection)
    - [GraphQL Schema](#graphql-schema-reference)
    - [Queries](#queries)
    - [Objects](#objects)
@@ -1670,7 +1673,9 @@ curl -v 'https://developer.api.autodesk.com/aec/graphql' \
     "query": "query GetProjects($hubId: String!) { projects(hubId: $hubId) { results { id name } } }",
     "variables": {
       "hubId": "a.YnVzaW5lc3M6YXV0b2Rlc2syMDA2"
-    }
+      
+
+       }
   }'
 ```
 
@@ -1797,954 +1802,6 @@ static async Task getHubs() {
       ]
     }
   }
-}
-```
-
-
----
-
-## elementgroupattip.md
-
-# elementGroupAtTip
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-## Code Examples
-
-```
-query GetElementGroupAtTip($elementGroupId: ID!) { elementGroupAtTip(elementGroupId: $elementGroupId) { # ElementGroupAtTip Fields } }
-```
-
-```
-{"elementGroupId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;"}
-```
-
-```
-query GetElementGroupAtTip($elementGroupId: ID!) { elementGroupAtTip(elementGroupId: $elementGroupId) { # ElementGroupAtTip Fields } }
-```
-
-```
-{"elementGroupId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;"}
-```
-
-
----
-
-## elementgroupbyversionnumber.md
-
-# elementGroupByVersionNumber
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-## Code Examples
-
-```
-query GetElementGroupByVersionNumber($elementGroupId: ID!, $versionNumber: Int!) { elementGroupByVersionNumber(elementGroupId: $elementGroupId, versionNumber: $versionNumber) { # ElementGroupByVersionNumber Fields } }
-```
-
-```
-{"elementGroupId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","versionNumber":"&lt;SOME-INT-TYPE-SCALAR-VALUE&gt;"}
-```
-
-```
-query GetElementGroupByVersionNumber($elementGroupId: ID!, $versionNumber: Int!) { elementGroupByVersionNumber(elementGroupId: $elementGroupId, versionNumber: $versionNumber) { # ElementGroupByVersionNumber Fields } }
-```
-
-```
-{"elementGroupId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","versionNumber":"&lt;SOME-INT-TYPE-SCALAR-VALUE&gt;"}
-```
-
-
----
-
-## elementgroupextractionstatus.md
-
-# elementGroupExtractionStatus
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-## Code Examples
-
-```
-query GetElementGroupExtractionStatus($fileUrn: ID!, $versionNumber: Int) { elementGroupExtractionStatus(fileUrn: $fileUrn, versionNumber: $versionNumber) { # ElementGroupExtractionStatus Fields } }
-```
-
-```
-{"fileUrn":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","versionNumber":"&lt;SOME-INT-TYPE-SCALAR-VALUE&gt;"}
-```
-
-```
-query GetElementGroupExtractionStatus($fileUrn: ID!, $versionNumber: Int) { elementGroupExtractionStatus(fileUrn: $fileUrn, versionNumber: $versionNumber) { # ElementGroupExtractionStatus Fields } }
-```
-
-```
-{"fileUrn":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","versionNumber":"&lt;SOME-INT-TYPE-SCALAR-VALUE&gt;"}
-```
-
-
----
-
-## elementgroupextractionstatusattip.md
-
-# elementGroupExtractionStatusAtTip
-
-## Arguments
-
-## Possible Returns
-
-## Code Examples
-
-```
-query GetElementGroupExtractionStatusAtTip($fileUrn: ID!, $accProjectId: ID!) { elementGroupExtractionStatusAtTip(fileUrn: $fileUrn, accProjectId: $accProjectId) { # ElementGroupExtractionStatusAtTip Fields } }
-```
-
-```
-{"fileUrn":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","accProjectId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;"}
-```
-
-```
-query GetElementGroupExtractionStatusAtTip($fileUrn: ID!, $accProjectId: ID!) { elementGroupExtractionStatusAtTip(fileUrn: $fileUrn, accProjectId: $accProjectId) { # ElementGroupExtractionStatusAtTip Fields } }
-```
-
-```
-{"fileUrn":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","accProjectId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;"}
-```
-
-
----
-
-## elementgroupsbyhub.md
-
-# elementGroupsByHub
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-## Code Examples
-
-**GraphQL Query:**
-```graphql
-query GetElementGroupsByHub($hubId: ID!, $filter: ElementGroupFilterInput, $pagination: PaginationInput) {
-  elementGroupsByHub(hubId: $hubId, filter: $filter, pagination: $pagination) {
-    # ElementGroupsByHub Fields
-  }
-}
-```
-
-**Variables:**
-```json
-{
-  "hubId": "<SOME-ID-TYPE-SCALAR-VALUE>",
-  "filter": "<SOME-ELEMENTGROUPFILTER-INPUT-TYPE-VALUE>",
-  "pagination": "<SOME-PAGINATION-INPUT-TYPE-VALUE>"
-}
-```
-
-
----
-
-## elementgroupsbyproject.md
-
-# elementGroupsByProject
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-## Code Examples
-
-**GraphQL Query:**
-```graphql
-query GetElementGroupsByProject($projectId: ID!, $filter: ElementGroupFilterInput, $pagination: PaginationInput) {
-  elementGroupsByProject(projectId: $projectId, filter: $filter, pagination: $pagination) {
-    # ElementGroupsByProject Fields
-  }
-}
-```
-
-**Variables:**
-```json
-{
-  "projectId": "<SOME-ID-TYPE-SCALAR-VALUE>",
-  "filter": "<SOME-ELEMENTGROUPFILTER-INPUT-TYPE-VALUE>",
-  "pagination": "<SOME-PAGINATION-INPUT-TYPE-VALUE>"
-}
-```
-
-
-
-
-
----
-
-## elementattip.md
-
-# elementAtTip
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-### Example 1
-
-## Code Examples
-
-**Basic Query:**
-```graphql
-query GetElementAtTip($elementId: ID!) {
-  elementAtTip(elementId: $elementId) {
-    # ElementAtTip Fields
-  }
-}
-```
-
-**Variables:**
-```json
-{
-  "elementId": "<SOME-ID-TYPE-SCALAR-VALUE>"
-}
-```
-
-**Advanced Query with Properties:**
-```graphql
-query GetElementAtTip($elementId: ID!, $propertiesPagination: PaginationInput) {
-  elementAtTip(elementId: $elementId) {
-    id
-    name
-    properties(pagination: $propertiesPagination) {
-      results {
-        name
-        value
-      }
-    }
-  }
-}
-```
-
-**Variables:**
-```json
-{
-  "elementId": "YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QV0hqdllJalM3NmNWbURQTXJFMXZRXzEwMDAwMA",
-  "propertiesPagination": {
-    "limit": 5
-  }
-}
-```
-
-**Response:**
-```json
-{
-  "data": {
-    "elementAtTip": {
-      "id": "YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QV0hqdllJalM3NmNWbURQTXJFMXZRXzEwMDAwMA",
-      "name": "2.5\" x 5\" rectangular (Orange)",
-      "properties": {
-        "pagination": {
-          "pageSize": 5,
-          "cursor": "Y3Vyc341fjU"
-        },
-        "results": [
-          {
-            "name": "Length",
-            "value": 1.2192
-          },
-          {
-            "name": "Design Option",
-            "value": "Main Model"
-          },
-          {
-            "name": "Area",
-            "value": 0.24032209999999998
-          },
-          {
-            "name": "Volume",
-            "value": 0.0098322384
-          }
-        ]
-      }
-    }
-  }
-}
-```
-
-
----
-
-## elementsbyhub.md
-
-# elementsByHub
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-### Example 1
-
-## Code Examples
-
-```
-query GetElementsByHub($hubId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByHub(hubId: $hubId, filter: $filter, pagination: $pagination) { # ElementsByHub Fields } }
-```
-
-```
-{"hubId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","filter":"&lt;SOME-ELEMENTFILTER-INPUT-TYPE-VALUE&gt;","pagination":"&lt;SOME-PAGINATION-INPUT-TYPE-VALUE&gt;"}
-```
-
-```
-query GetElementsByHub($hubId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByHub(hubId: $hubId, filter: $filter, pagination: $pagination) { pagination { pageSize cursor } results { id name } } }
-```
-
-```
-{"hubId":"b.e4fbd315-2dc5-4026-8ca3-80f09d24ff42","filter":{"query":"property.name.category==Windows and 'property.name.Element Context'==Instance"},"pagination":{"limit":5}}
-```
-
-```
-{"data":{"elementsByHub":{"pagination":{"pageSize":5,"cursor":"YWRjdXJzfk5VTEx-QlE9PX41"},"results":[{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2M","name":"32.10-sparing tbv installaties_1400x600"},{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2Q","name":"32.10-sparing tbv installaties_1100x650"},{"id":"YWVjZX5F ...etc
-```
-
-```
-query GetElementsByHub($hubId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByHub(hubId: $hubId, filter: $filter, pagination: $pagination) { # ElementsByHub Fields } }
-```
-
-```
-{"hubId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","filter":"&lt;SOME-ELEMENTFILTER-INPUT-TYPE-VALUE&gt;","pagination":"&lt;SOME-PAGINATION-INPUT-TYPE-VALUE&gt;"}
-```
-
-```
-query GetElementsByHub($hubId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByHub(hubId: $hubId, filter: $filter, pagination: $pagination) { pagination { pageSize cursor } results { id name } } }
-```
-
-```
-{"hubId":"b.e4fbd315-2dc5-4026-8ca3-80f09d24ff42","filter":{"query":"property.name.category==Windows and 'property.name.Element Context'==Instance"},"pagination":{"limit":5}}
-```
-
-```
-{"data":{"elementsByHub":{"pagination":{"pageSize":5,"cursor":"YWRjdXJzfk5VTEx-QlE9PX41"},"results":[{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2M","name":"32.10-sparing tbv installaties_1400x600"},{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2Q","name":"32.10-sparing tbv installaties_1100x650"},{"id":"YWVjZX5F ...etc
-```
-
-
----
-
-## elementsbyproject.md
-
-# elementsByProject
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-### Example 1
-
-## Code Examples
-
-```
-query GetElementsByProject($projectId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByProject(projectId: $projectId, filter: $filter, pagination: $pagination) { # ElementsByProject Fields } }
-```
-
-```
-{"projectId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","filter":"&lt;SOME-ELEMENTFILTER-INPUT-TYPE-VALUE&gt;","pagination":"&lt;SOME-PAGINATION-INPUT-TYPE-VALUE&gt;"}
-```
-
-```
-query GetElementsByProject($projectId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByProject(projectId: $projectId, filter: $filter, pagination: $pagination) { pagination { pageSize cursor } results { id name } } }
-```
-
-```
-{"projectId":"YWltcHJvan5iLmU0ZmJkMzE1LTJkYzUtNDAyNi04Y2EzLTgwZjA5ZDI0ZmY0Mn5iLjdhZGJmOWZkLWRlYmItNDI5Yy1iZmU1LTMyYTNjMjJjMDY5NQ","filter":{"query":"property.name.category==Windows and 'property.name.Element Context'==Instance"},"pagination":{"limit":5}}
-```
-
-```
-{"data":{"elementsByProject":{"pagination":{"pageSize":5,"cursor":"YWRjdXJzfk5VTEx-QlE9PX41"},"results":[{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2M","name":"32.10-sparing tbv installaties_1400x600"},{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2Q","name":"32.10-sparing tbv installaties_1100x650"},{"id":"YWVj ...etc
-```
-
-```
-query GetElementsByProject($projectId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByProject(projectId: $projectId, filter: $filter, pagination: $pagination) { # ElementsByProject Fields } }
-```
-
-```
-{"projectId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","filter":"&lt;SOME-ELEMENTFILTER-INPUT-TYPE-VALUE&gt;","pagination":"&lt;SOME-PAGINATION-INPUT-TYPE-VALUE&gt;"}
-```
-
-```
-query GetElementsByProject($projectId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByProject(projectId: $projectId, filter: $filter, pagination: $pagination) { pagination { pageSize cursor } results { id name } } }
-```
-
-```
-{"projectId":"YWltcHJvan5iLmU0ZmJkMzE1LTJkYzUtNDAyNi04Y2EzLTgwZjA5ZDI0ZmY0Mn5iLjdhZGJmOWZkLWRlYmItNDI5Yy1iZmU1LTMyYTNjMjJjMDY5NQ","filter":{"query":"property.name.category==Windows and 'property.name.Element Context'==Instance"},"pagination":{"limit":5}}
-```
-
-```
-{"data":{"elementsByProject":{"pagination":{"pageSize":5,"cursor":"YWRjdXJzfk5VTEx-QlE9PX41"},"results":[{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2M","name":"32.10-sparing tbv installaties_1400x600"},{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2Q","name":"32.10-sparing tbv installaties_1100x650"},{"id":"YWVj ...etc
-```
-
-
----
-
-## elementsbyfolder.md
-
-# elementsByFolder
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-### Example 1
-
-## Code Examples
-
-```
-query GetElementsByFolder($projectId: ID!, $folderId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByFolder(projectId: $projectId, folderId: $folderId, filter: $filter, pagination: $pagination) { # ElementsByFolder Fields } }
-```
-
-```
-{"projectId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","folderId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","filter":"&lt;SOME-ELEMENTFILTER-INPUT-TYPE-VALUE&gt;","pagination":"&lt;SOME-PAGINATION-INPUT-TYPE-VALUE&gt;"}
-```
-
-```
-query GetElementsByFolder($folderId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByFolder(folderId: $folderId, filter: $filter, pagination: $pagination) { pagination { pageSize cursor } results { id name } } }
-```
-
-```
-{"folderId":"Zm9sZH5iLmU0ZmJkMzE1LTJkYzUtNDAyNi04Y2EzLTgwZjA5ZDI0ZmY0Mn5iLjdhZGJmOWZkLWRlYmItNDI5Yy1iZmU1LTMyYTNjMjJjMDY5NX51cm46YWRzay53aXBzdGc6ZnMuZm9sZGVyOmNvLlhvSG9RY3pHUm9LczVZRm4yUDNpWlE","filter":{"query":"property.name.category==Windows and 'property.name.Element Context'==Instance"},"pagination":{"limit":5}}
-```
-
-```
-{"data":{"elementsByFolder":{"pagination":{"pageSize":5,"cursor":"YWRjdXJzfk5VTEx-QlE9PX41"},"results":[{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2M","name":"32.10-sparing tbv installaties_1400x600"},{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2Q","name":"32.10-sparing tbv installaties_1100x650"},{"id":"YWVjZ ...etc
-```
-
-```
-query GetElementsByFolder($projectId: ID!, $folderId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByFolder(projectId: $projectId, folderId: $folderId, filter: $filter, pagination: $pagination) { # ElementsByFolder Fields } }
-```
-
-```
-{"projectId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","folderId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","filter":"&lt;SOME-ELEMENTFILTER-INPUT-TYPE-VALUE&gt;","pagination":"&lt;SOME-PAGINATION-INPUT-TYPE-VALUE&gt;"}
-```
-
-```
-query GetElementsByFolder($folderId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByFolder(folderId: $folderId, filter: $filter, pagination: $pagination) { pagination { pageSize cursor } results { id name } } }
-```
-
-```
-{"folderId":"Zm9sZH5iLmU0ZmJkMzE1LTJkYzUtNDAyNi04Y2EzLTgwZjA5ZDI0ZmY0Mn5iLjdhZGJmOWZkLWRlYmItNDI5Yy1iZmU1LTMyYTNjMjJjMDY5NX51cm46YWRzay53aXBzdGc6ZnMuZm9sZGVyOmNvLlhvSG9RY3pHUm9LczVZRm4yUDNpWlE","filter":{"query":"property.name.category==Windows and 'property.name.Element Context'==Instance"},"pagination":{"limit":5}}
-```
-
-```
-{"data":{"elementsByFolder":{"pagination":{"pageSize":5,"cursor":"YWRjdXJzfk5VTEx-QlE9PX41"},"results":[{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2M","name":"32.10-sparing tbv installaties_1400x600"},{"id":"YWVjZX5FMnRqOFJFOXRsSlRQNU9WVzBiaDZ4X0wyQ35QQllLNWlOb1NsQ283QVpEOVdUM0V3XzEyM2ViN2Q","name":"32.10-sparing tbv installaties_1100x650"},{"id":"YWVjZ ...etc
-```
-
-
----
-
-## elementsbyelementgroup.md
-
-# elementsByElementGroup
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-## Code Examples
-
-```
-query GetElementsByElementGroup($elementGroupId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByElementGroup(elementGroupId: $elementGroupId, filter: $filter, pagination: $pagination) { # ElementsByElementGroup Fields } }
-```
-
-```
-{"elementGroupId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","filter":"&lt;SOME-ELEMENTFILTER-INPUT-TYPE-VALUE&gt;","pagination":"&lt;SOME-PAGINATION-INPUT-TYPE-VALUE&gt;"}
-```
-
-```
-query GetElementsByElementGroup($elementGroupId: ID!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByElementGroup(elementGroupId: $elementGroupId, filter: $filter, pagination: $pagination) { # ElementsByElementGroup Fields } }
-```
-
-```
-{"elementGroupId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","filter":"&lt;SOME-ELEMENTFILTER-INPUT-TYPE-VALUE&gt;","pagination":"&lt;SOME-PAGINATION-INPUT-TYPE-VALUE&gt;"}
-```
-
-
----
-
-## elementsbyelementgroupatversion.md
-
-# elementsByElementGroupAtVersion
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-## Code Examples
-
-```
-query GetElementsByElementGroupAtVersion($elementGroupId: ID!, $versionNumber: Int!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByElementGroupAtVersion(elementGroupId: $elementGroupId, versionNumber: $versionNumber, filter: $filter, pagination: $pagination) { # ElementsByElementGroupAtVersion Fields } }
-```
-
-```
-{"elementGroupId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","versionNumber":"&lt;SOME-INT-TYPE-SCALAR-VALUE&gt;","filter":"&lt;SOME-ELEMENTFILTER-INPUT-TYPE-VALUE&gt;","pagination":"&lt;SOME-PAGINATION-INPUT-TYPE-VALUE&gt;"}
-```
-
-```
-query GetElementsByElementGroupAtVersion($elementGroupId: ID!, $versionNumber: Int!, $filter: ElementFilterInput, $pagination: PaginationInput) { elementsByElementGroupAtVersion(elementGroupId: $elementGroupId, versionNumber: $versionNumber, filter: $filter, pagination: $pagination) { # ElementsByElementGroupAtVersion Fields } }
-```
-
-```
-{"elementGroupId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;","versionNumber":"&lt;SOME-INT-TYPE-SCALAR-VALUE&gt;","filter":"&lt;SOME-ELEMENTFILTER-INPUT-TYPE-VALUE&gt;","pagination":"&lt;SOME-PAGINATION-INPUT-TYPE-VALUE&gt;"}
-```
-
-
----
-
-## hub.md
-
-# hub
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-### Example 1
-
-## Code Examples
-
-```
-query GetHub($hubId: ID!) { hub(hubId: $hubId) { # Hub Fields } }
-```
-
-```
-{"hubId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;"}
-```
-
-```
-query GetHub($hubId: ID!) { hub(hubId: $hubId) { id name projects { results { id name } } } }
-```
-
-```
-{"hubId":"b.e4fbd315-2dc5-4026-8ca3-80f09d24ff42"}
-```
-
-```
-{"data":{"hub":{"id":"b.e4fbd315-2dc5-4026-8ca3-80f09d24ff42","name":"Revit Nexus","projects":{"results":[{"id":"YWltcHJvan5iLmU0ZmJkMzE1LTJkYzUtNDAyNi04Y2EzLTgwZjA5ZDI0ZmY0Mn5iLjdhZGJmOWZkLWRlYmItNDI5Yy1iZmU1LTMyYTNjMjJjMDY5NQ","name":"AEC Design AIM STG"},{"id":"YWltcHJvan5iLmU0ZmJkMzE1LTJkYzUtNDAyNi04Y2EzLTgwZjA5ZDI0ZmY0Mn5iLjgxY2U0YjkyLWIxNTYtNDE5ZS04MjM1LTNiNzY5M2FhMGY0MA","name":"Extractor-A ...etc
-```
-
-```
-query GetHub($hubId: ID!) { hub(hubId: $hubId) { # Hub Fields } }
-```
-
-```
-{"hubId":"&lt;SOME-ID-TYPE-SCALAR-VALUE&gt;"}
-```
-
-```
-query GetHub($hubId: ID!) { hub(hubId: $hubId) { id name projects { results { id name } } } }
-```
-
-```
-{"hubId":"b.e4fbd315-2dc5-4026-8ca3-80f09d24ff42"}
-```
-
-```
-{"data":{"hub":{"id":"b.e4fbd315-2dc5-4026-8ca3-80f09d24ff42","name":"Revit Nexus","projects":{"results":[{"id":"YWltcHJvan5iLmU0ZmJkMzE1LTJkYzUtNDAyNi04Y2EzLTgwZjA5ZDI0ZmY0Mn5iLjdhZGJmOWZkLWRlYmItNDI5Yy1iZmU1LTMyYTNjMjJjMDY5NQ","name":"AEC Design AIM STG"},{"id":"YWltcHJvan5iLmU0ZmJkMzE1LTJkYzUtNDAyNi04Y2EzLTgwZjA5ZDI0ZmY0Mn5iLjgxY2U0YjkyLWIxNTYtNDE5ZS04MjM1LTNiNzY5M2FhMGY0MA","name":"Extractor-A ...etc
-```
-
----
-
-## GraphQL Schema Reference
-
-### Core Schema Definition
-
-The AEC Data Model API follows standard GraphQL schema conventions. Below is the complete schema definition:
-
-#### Root Query Type
-
-```graphql
-type Query {
-  # Hub Operations
-  hubs(filter: HubFilterInput, pagination: PaginationInput): HubConnection
-  hub(hubId: ID!): Hub
-  
-  # Project Operations  
-  projects(hubId: ID!, filter: ProjectFilterInput, pagination: PaginationInput): ProjectConnection
-  project(projectId: ID!): Project
-  
-  # Element Group Operations
-  elementGroupsByHub(hubId: ID!, filter: ElementGroupFilterInput, pagination: PaginationInput): ElementGroupConnection
-  elementGroupsByProject(projectId: ID!, filter: ElementGroupFilterInput, pagination: PaginationInput): ElementGroupConnection
-  elementGroupsByFolder(projectId: ID!, folderId: ID!, filter: ElementGroupFilterInput, pagination: PaginationInput): ElementGroupConnection
-  elementGroupsByFolderAndSubFolders(projectId: ID!, folderId: ID!, filter: ElementGroupFilterInput, pagination: PaginationInput): ElementGroupConnection
-  elementGroupAtTip(elementGroupId: ID!): ElementGroup
-  
-  # Element Operations
-  elementsByHub(hubId: ID!, filter: ElementFilterInput, pagination: PaginationInput): ElementConnection
-  elementsByProject(projectId: ID!, filter: ElementFilterInput, pagination: PaginationInput): ElementConnection
-  elementsByElementGroup(elementGroupId: ID!, filter: ElementFilterInput, pagination: PaginationInput): ElementConnection
-  elementAtTip(elementId: ID!): Element
-  
-  # Property Operations
-  propertiesByHub(hubId: ID!, filter: PropertyFilterInput, pagination: PaginationInput): PropertyConnection
-  propertiesByProject(projectId: ID!, filter: PropertyFilterInput, pagination: PaginationInput): PropertyConnection
-  propertiesByElementGroup(elementGroupId: ID!, filter: PropertyFilterInput, pagination: PaginationInput): PropertyConnection
-  
-  # Reference Operations
-  referencesByHub(hubId: ID!, filter: ReferenceFilterInput, pagination: PaginationInput): ReferenceConnection
-  referencesByProject(projectId: ID!, filter: ReferenceFilterInput, pagination: PaginationInput): ReferenceConnection
-  referencesByElementGroup(elementGroupId: ID!, filter: ReferenceFilterInput, pagination: PaginationInput): ReferenceConnection
-}
-```
-
-#### Core Object Types
-
-```graphql
-# Hub represents a top-level organizational unit
-type Hub {
-  id: ID!
-  name: String!
-  alternativeIdentifiers: HubAlternativeIdentifiers
-  projects(filter: ProjectFilterInput, pagination: PaginationInput): ProjectConnection
-  metadata: HubMetadata
-}
-
-type HubAlternativeIdentifiers {
-  dataManagementAPIHubId: String
-}
-
-type HubMetadata {
-  createdOn: String
-  modifiedOn: String
-}
-
-# Project represents a container for related data within a Hub
-type Project {
-  id: ID!
-  name: String!
-  hub: Hub!
-  alternativeIdentifiers: ProjectAlternativeIdentifiers
-  metadata: ProjectMetadata
-  elementGroups(filter: ElementGroupFilterInput, pagination: PaginationInput): ElementGroupConnection
-}
-
-type ProjectAlternativeIdentifiers {
-  dataManagementAPIProjectId: String
-  externalProjectId: String
-}
-
-type ProjectMetadata {
-  createdOn: String
-  modifiedOn: String
-}
-
-# ElementGroup represents a collection of related elements (typically a file)
-type ElementGroup {
-  id: ID!
-  name: String!
-  project: Project!
-  alternativeIdentifiers: ElementGroupAlternativeIdentifiers
-  metadata: ElementGroupMetadata
-  elements(filter: ElementFilterInput, pagination: PaginationInput): ElementConnection
-  properties(filter: PropertyFilterInput, pagination: PaginationInput): PropertyConnection
-}
-
-type ElementGroupAlternativeIdentifiers {
-  fileUrn: String
-  fileVersionUrn: String
-}
-
-type ElementGroupMetadata {
-  createdOn: String
-  modifiedOn: String
-  extractedOn: String
-  sourceFileLocation: String
-}
-
-# Element represents individual AEC objects (walls, doors, etc.)
-type Element {
-  id: ID!
-  name: String
-  elementGroup: ElementGroup!
-  properties(filter: PropertyFilterInput, pagination: PaginationInput): PropertyConnection
-  references(filter: ReferenceFilterInput, pagination: PaginationInput): ReferenceConnection
-}
-
-# Property represents metadata associated with elements
-type Property {
-  id: ID!
-  name: String!
-  value: PropertyValue
-  definition: PropertyDefinition
-}
-
-union PropertyValue = StringValue | NumberValue | BooleanValue
-
-type StringValue {
-  stringValue: String!
-}
-
-type NumberValue {
-  numberValue: Float!
-}
-
-type BooleanValue {
-  booleanValue: Boolean!
-}
-
-type PropertyDefinition {
-  name: String!
-  description: String
-  dataType: PropertyDataType!
-  units: PropertyUnits
-}
-
-enum PropertyDataType {
-  STRING
-  NUMBER
-  BOOLEAN
-  DATE
-  REFERENCE
-}
-
-type PropertyUnits {
-  name: String!
-  symbol: String
-}
-
-# Reference represents relationships between elements
-type Reference {
-  id: ID!
-  sourceElement: Element!
-  targetElement: Element!
-  referenceType: String!
-}
-```
-
-#### Connection and Pagination Types
-
-```graphql
-# Connection types for paginated results
-type HubConnection {
-  pagination: PaginationInfo!
-  results: [Hub!]!
-}
-
-type ProjectConnection {
-  pagination: PaginationInfo!
-  results: [Project!]!
-}
-
-type ElementGroupConnection {
-  pagination: PaginationInfo!
-  results: [ElementGroup!]!
-}
-
-type ElementConnection {
-  pagination: PaginationInfo!
-  results: [Element!]!
-}
-
-type PropertyConnection {
-  pagination: PaginationInfo!
-  results: [Property!]!
-}
-
-type ReferenceConnection {
-  pagination: PaginationInfo!
-  results: [Reference!]!
-}
-
-type PaginationInfo {
-  cursor: String
-  pageSize: Int
-}
-```
-
-#### Input Types
-
-```graphql
-# Filter input types
-input HubFilterInput {
-  query: String
-}
-
-input ProjectFilterInput {
-  query: String
-}
-
-input ElementGroupFilterInput {
-  query: String
-}
-
-input ElementFilterInput {
-  query: String
-}
-
-input PropertyFilterInput {
-  query: String
-}
-
-input ReferenceFilterInput {
-  query: String
-}
-
-# Pagination input
-input PaginationInput {
-  limit: Int
-  cursor: String
-}
-```
-
-#### Scalar Types
-
-```graphql
-# Custom scalar types
-scalar ID      # Unique identifier
-scalar String  # Text data
-scalar Int     # Integer numbers
-scalar Float   # Decimal numbers
-scalar Boolean # True/false values
-```
-
-### Schema Usage Examples
-
-#### Introspection Query
-```graphql
-query IntrospectionQuery {
-  __schema {
-    types {
-      name
-      kind
-      description
-    }
-  }
-}
-```
-
-#### Type Information Query
-```graphql
-query TypeInfo {
-  __type(name: "Hub") {
-    name
-    fields {
-      name
-      type {
-        name
-      }
-    }
-  }
-}
-```
-
-### Schema Validation
-
-The schema supports standard GraphQL validation including:
-- **Type Safety**: All fields are strongly typed
-- **Non-null Constraints**: Required fields marked with `!`
-- **Input Validation**: All input types validated against schema
-- **Query Depth Limiting**: Prevents overly complex nested queries
-- **Field Selection**: Only requested fields are returned
-
----
-
-## hubs.md
-
-# hubs
-
-## Arguments
-
-## Possible Returns
-
-## Examples
-
-### Example 1
-
-## Code Examples
-
-```
-query GetHubs($filter: HubFilterInput, $pagination: PaginationInput) { hubs(filter: $filter, pagination: $pagination) { # Hubs Fields } }
-```
-
-```
-{"filter":"&lt;SOME-HUBFILTER-INPUT-TYPE-VALUE&gt;","pagination":"&lt;SOME-PAGINATION-INPUT-TYPE-VALUE&gt;"}
-```
-
-**Simple Query:**
-```graphql
-query GetHubs {
-  hubs {
-    results {
-      id
-      name
-    }
-  }
-}
-```
-
-**Variables:**
-```json
-{}
-```
-
-**Response:**
-```json
-{
-  "data": {
-    "hubs": {
-      "results": [
-        {
-          "name": "Revit Nexus",
-          "id": "b.e4fbd315-2dc5-4026-8ca3-80f09d24ff42"
-        },
-        {
-          "name": "Golden Gate",
-          "id": "b.5c07c84c-bbd9-476e-8712-547f74c5b76b"
-        }
-      ]
-    }
-  }
-}
-```
-
-**Advanced Query with Filters:**
-```graphql
-query GetHubs($filter: HubFilterInput, $pagination: PaginationInput) {
-  hubs(filter: $filter, pagination: $pagination) {
-    # Hubs Fields
-  }
-}
-```
-
-**Variables:**
-```json
-{
-  "filter": "<SOME-HUBFILTER-INPUT-TYPE-VALUE>",
-  "pagination": "<SOME-PAGINATION-INPUT-TYPE-VALUE>"
 }
 ```
 
@@ -2883,18 +1940,486 @@ query GetProjects($hubId: String!) {
 }
 ```
 
+## Query Building Patterns
+
+### Understanding Object Relationships
+
+The AEC Data Model follows a hierarchical structure:
+```
+Hub
+└── Project
+    └── ElementGroup (File)
+        └── Element
+            ├── Properties
+            └── References
+```
+
+### Common Query Patterns by Use Case
+
+#### 1. **Exploring Available Data**
+```graphql
+# Get all hubs you have access to
+query ListHubs {
+  hubs {
+    results {
+      id
+      name
+      projects(pagination: { limit: 5 }) {
+        results {
+          id
+          name
+          elementGroups(pagination: { limit: 3 }) {
+            results {
+              id
+              name
+              extractionStatus
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### 2. **Finding Elements by Category**
+```graphql
+# Find all walls in a specific element group
+query FindWalls($elementGroupId: ID!) {
+  elementsByElementGroup(
+    elementGroupId: $elementGroupId
+    filter: { query: "property.name.category==Walls" }
+    pagination: { limit: 100 }
+  ) {
+    pagination { cursor hasNextPage }
+    results {
+      id
+      name
+      properties(filter: { names: ["Length", "Height", "Area", "Base Constraint"] }) {
+        results {
+          name
+          value
+          displayValue
+          definition {
+            units { name symbol }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### 3. **Analyzing Element Properties**
+```graphql
+# Get detailed property information for specific elements
+query AnalyzeElementProperties($elementId: ID!) {
+  elementAtTip(elementId: $elementId) {
+    id
+    name
+    properties(pagination: { limit: 50 }) {
+      results {
+        name
+        value
+        displayValue
+        definition {
+          id
+          name
+          description
+          dataType
+          group
+          units {
+            name
+            symbol
+            abbreviation
+          }
+        }
+      }
+    }
+    references {
+      results {
+        name
+        displayValue
+        value {
+          id
+          name
+          properties(filter: { names: ["Family Name", "Type Name"] }) {
+            results {
+              name
+              value
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### 4. **Getting Distinct Property Values**
+```graphql
+# Find all unique family names for doors
+query GetDistinctDoorFamilies($elementGroupId: ID!) {
+  distinctPropertyValuesInElementGroupByName(
+    elementGroupId: $elementGroupId
+    name: "Family Name"
+    filter: { query: "property.name.category==Doors" }
+  ) {
+    results {
+      definition {
+        id
+        name
+      }
+      values {
+        value
+        count
+      }
+    }
+  }
+}
+```
+
+#### 5. **Working with Element Relationships**
+```graphql
+# Find elements and their type relationships
+query ElementsWithTypes($elementGroupId: ID!) {
+  elementsByElementGroup(
+    elementGroupId: $elementGroupId
+    filter: { query: "property.name.category==Walls AND property.name.Element Context==Instance" }
+    pagination: { limit: 50 }
+  ) {
+    results {
+      id
+      name
+      properties(filter: { names: ["Element Name", "Family Name"] }) {
+        results { name value }
+      }
+      references(name: "Type") {
+        results {
+          name
+          value {
+            id
+            name
+            properties(filter: { names: ["Type Name", "Family Name"] }) {
+              results { name value }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Field Selection Guidelines
+
+#### **Required Fields to Always Include:**
+- `id` - Always include for unique identification
+- `name` - Human-readable identifier
+- `pagination` fields for collections (`cursor`, `hasNextPage`, `pageSize`)
+
+#### **Commonly Useful Fields:**
+- `alternativeIdentifiers` - For cross-system integration
+- `metadata.createdOn` - For data provenance
+- `extractionStatus` - For ElementGroups to ensure data is ready
+- `definition` for properties - Provides context about data types and units
+
+#### **Performance Considerations:**
+- Use `filter` parameters to reduce data transfer
+- Limit `pagination.limit` to reasonable values (50-200 items)
+- Request only needed property names using `filter: { names: [...] }`
+- Use `includeReferencesProperties` selectively ("Type" or "Instance")
+
+### Error-Prone Field Patterns to Avoid
+
+❌ **Don't do this:**
+```graphql
+# Requesting all properties without filtering
+query BadQuery($elementId: ID!) {
+  elementAtTip(elementId: $elementId) {
+    properties {  # This could return hundreds of properties
+      results {
+        name
+        value
+        definition {
+          # All definition fields - potentially expensive
+        }
+      }
+    }
+  }
+}
+```
+
+✅ **Do this instead:**
+```graphql
+# Filtered and targeted property requests
+query GoodQuery($elementId: ID!) {
+  elementAtTip(elementId: $elementId) {
+    id
+    name
+    properties(
+      filter: { names: ["Length", "Width", "Height", "Area"] }
+      pagination: { limit: 20 }
+    ) {
+      results {
+        name
+        value
+        displayValue
+        definition {
+          units {
+            name
+            symbol
+          }
+        }
+      }
+    }
+  }
+}
+```
 
 ---
 
-## Support and Resources
+## Field Discovery and Introspection
 
-- **Official Documentation**: [Autodesk Developer Portal](https://aps.autodesk.com/)
-- **API Status**: Monitor service status and updates
-- **Community Forums**: Connect with other developers
-- **Sample Code**: Complete working examples available on GitHub
+### Using GraphQL Introspection to Discover Fields
+
+GraphQL provides built-in introspection capabilities to discover available fields and types:
+
+#### **Discover All Available Types:**
+```graphql
+query DiscoverTypes {
+  __schema {
+    types {
+      name
+      kind
+      description
+      fields {
+        name
+        type {
+          name
+          kind
+        }
+        description
+      }
+    }
+  }
+}
+```
+
+#### **Explore a Specific Type:**
+```graphql
+query ExploreElementType {
+  __type(name: "Element") {
+    name
+    description
+    fields {
+      name
+      type {
+        name
+        kind
+        ofType {
+          name
+          kind
+        }
+      }
+      description
+      args {
+        name
+        type {
+          name
+          kind
+        }
+        defaultValue
+      }
+    }
+  }
+}
+```
+
+#### **Find Available Query Operations:**
+```graphql
+query DiscoverQueries {
+  __schema {
+    queryType {
+      fields {
+        name
+        description
+        type {
+          name
+          kind
+        }
+        args {
+          name
+          type {
+            name
+            kind
+          }
+          description
+        }
+      }
+    }
+  }
+}
+```
+
+### Field Documentation Quick Reference
+
+| Object Type | Key Fields | Description |
+|-------------|------------|-------------|
+| **Hub** | `id`, `name`, `projects`, `alternativeIdentifiers`, `metadata` | Top-level organizational unit |
+| **Project** | `id`, `name`, `hub`, `elementGroups`, `folders`, `alternativeIdentifiers`, `metadata` | Container for related data |
+| **ElementGroup** | `id`, `name`, `project`, `elements`, `properties`, `extractionStatus`, `alternativeIdentifiers`, `metadata` | Collection of elements (typically a file) |
+| **Element** | `id`, `name`, `elementGroup`, `properties`, `references`, `referencedBy`, `alternativeIdentifiers` | Individual AEC object |
+| **Property** | `name`, `value`, `displayValue`, `definition` | Property of an element |
+| **PropertyDefinition** | `id`, `name`, `description`, `dataType`, `units`, `group` | Defines structure of a property |
+| **Reference** | `name`, `displayValue`, `value` | Relationship between elements |
+
+### Common Field Combinations
+
+#### **Basic Object Information:**
+```graphql
+{
+  id
+  name
+  alternativeIdentifiers {
+    # Choose appropriate identifiers based on object type
+  }
+  metadata {
+    createdOn
+    modifiedOn
+  }
+}
+```
+
+#### **Element with Essential Properties:**
+```graphql
+{
+  id
+  name
+  properties(filter: { names: ["category", "Family Name", "Type Name"] }) {
+    results {
+      name
+      value
+      displayValue
+    }
+  }
+}
+```
+
+#### **Element with Geometric Properties:**
+```graphql
+{
+  id
+  name
+  properties(filter: { names: ["Length", "Width", "Height", "Area", "Volume"] }) {
+    results {
+      name
+      value
+      displayValue
+      definition {
+        units {
+          name
+          symbol
+        }
+      }
+    }
+  }
+}
+```
+
+#### **Element with Material Information:**
+```graphql
+{
+  id
+  name
+  properties(filter: { names: ["Material", "Structural Material", "Finish"] }) {
+    results {
+      name
+      value
+      displayValue
+    }
+  }
+  references(name: "Material") {
+    results {
+      name
+      value {
+        id
+        name
+        properties(filter: { names: ["Material Class", "Thermal Conductivity"] }) {
+          results {
+            name
+            value
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Field Validation and Error Handling
+
+#### **Check Field Existence:**
+```graphql
+query ValidateFields($elementId: ID!) {
+  elementAtTip(elementId: $elementId) {
+    id
+    name
+    properties(filter: { names: ["Length"] }) {
+      results {
+        name
+        value
+        displayValue
+        definition {
+          id
+          name
+          dataType
+        }
+      }
+    }
+  }
+}
+```
+
+If a field doesn't exist, GraphQL will return an error. Always check the response for errors:
+
+```json
+{
+  "errors": [
+    {
+      "message": "Cannot query field 'nonExistentField' on type 'Element'",
+      "locations": [{"line": 4, "column": 5}],
+      "extensions": {
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ]
+}
+```
+
+#### **Safe Field Access Pattern:**
+```graphql
+# Use fragments to handle optional fields
+fragment SafeElementFields on Element {
+  id
+  name
+  ... on Element {
+    properties(filter: { names: ["Length"] }) {
+      results {
+        name
+        value
+        displayValue
+      }
+    }
+  }
+}
+
+query SafeQuery($elementId: ID!) {
+  elementAtTip(elementId: $elementId) {
+    ...SafeElementFields
+  }
+}
+```
 
 ---
-
-*Document Version: 2.0*  
-*Last Updated: 2025-01-08*
 
