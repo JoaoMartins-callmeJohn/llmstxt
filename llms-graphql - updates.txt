@@ -2,7 +2,18 @@
 
 > The AEC Data Model API is a GraphQL-based API that provides the ability to directly interact with granular AEC data in the cloud without the need of building custom plug-ins for the desktop authoring tools like Revit, Civil 3D, Plant3D and other AEC connected design applications.
 
+## ⚠️ CRITICAL: Official API Endpoint
+
+**THE ONLY CORRECT ENDPOINT IS:**
+```
+https://developer.api.autodesk.com/aec/graphql
+```
+
+**Do not use any other endpoints - they will not work!**
+
 ## Table of Contents
+
+### 🚨 [ENDPOINT REFERENCE - CRITICAL INFORMATION](#endpoint-reference---critical-information)
 
 ### 1. [Getting Started](#getting-started)
    - [Overview](#overview)
@@ -108,6 +119,22 @@ const scopes = ['data:read', 'data:create', 'data:write'];
 ```
 
 ### Step 3: Make Your First Query
+
+**IMPORTANT: Use the correct endpoint**
+```
+POST https://developer.api.autodesk.com/aec/graphql
+```
+
+```bash
+curl -X POST 'https://developer.api.autodesk.com/aec/graphql' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "query GetHubs { hubs { results { name id } } }"
+  }'
+```
+
+Example GraphQL query:
 ```graphql
 query GetHubs {
   hubs {
@@ -244,27 +271,178 @@ const scopes = ['data:read', 'data:create', 'data:write'];
 
 ## Endpoints
 
-### Primary Endpoint
+## 🚨 ENDPOINT REFERENCE - CRITICAL INFORMATION
+
+### Official AEC Data Model API Endpoint
+
+**THE ONLY CORRECT ENDPOINT:**
 ```
 https://developer.api.autodesk.com/aec/graphql
 ```
 
-### Regional Endpoints
-- **US East**: `https://developer.api.autodesk.com/aec/graphql`
-- **Europe**: `https://developer.api.autodesk.com/aec/graphql/eu`
-- **Asia Pacific**: `https://developer.api.autodesk.com/aec/graphql/ap`
+### Complete Request Template
+
+**Always use this exact format:**
+```bash
+curl -X POST 'https://developer.api.autodesk.com/aec/graphql' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "YOUR_GRAPHQL_QUERY_HERE"
+  }'
+```
+
+### Endpoint Validation Checklist
+
+✅ **Correct URL:** `https://developer.api.autodesk.com/aec/graphql`
+✅ **Method:** POST
+✅ **Content-Type:** `application/json`
+✅ **Authorization:** `Bearer YOUR_ACCESS_TOKEN`
+✅ **Body:** JSON with "query" field
+
+❌ **Common Incorrect Endpoints to NEVER use:**
+- `https://aps.autodesk.com/graphql`
+- `https://api.autodesk.com/graphql`
+- `https://aec.autodesk.com/graphql`
+- `https://forge.autodesk.com/graphql`
+- `https://developer.api.autodesk.com/graphql` (missing /aec/)
+
+### Regional Endpoints (Alternative Options)
+- **US East (Primary):** `https://developer.api.autodesk.com/aec/graphql`
+- **Europe:** `https://developer.api.autodesk.com/aec/graphql/eu`
+- **Asia Pacific:** `https://developer.api.autodesk.com/aec/graphql/ap`
+
+### Programming Language Examples
+
+**JavaScript/Node.js:**
+```javascript
+const response = await fetch('https://developer.api.autodesk.com/aec/graphql', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    query: `{ hubs { results { name id } } }`
+  })
+});
+```
+
+**Python:**
+```python
+import requests
+
+url = 'https://developer.api.autodesk.com/aec/graphql'
+headers = {
+    'Authorization': f'Bearer {access_token}',
+    'Content-Type': 'application/json'
+}
+data = {
+    'query': '{ hubs { results { name id } } }'
+}
+
+response = requests.post(url, headers=headers, json=data)
+```
+
+**C#:**
+```csharp
+using (var client = new HttpClient())
+{
+    client.DefaultRequestHeaders.Authorization = 
+        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+    
+    var content = new StringContent(
+        JsonSerializer.Serialize(new { query = "{ hubs { results { name id } } }" }),
+        Encoding.UTF8,
+        "application/json"
+    );
+    
+    var response = await client.PostAsync(
+        "https://developer.api.autodesk.com/aec/graphql", 
+        content
+    );
+}
+```
+
+### Quick Endpoint Test
+
+To verify the endpoint is working, use this test query:
+```bash
+curl -X POST 'https://developer.api.autodesk.com/aec/graphql' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{"query": "{ __schema { queryType { name } } }"}'
+```
+
+Expected response:
+```json
+{
+  "data": {
+    "__schema": {
+      "queryType": {
+        "name": "Query"
+      }
+    }
+  }
+}
+```
 
 ## Making Requests
 
 ### Request Format
-All requests must be POST requests with the following headers:
+**Always use POST method to the official endpoint:**
 
+```
+POST https://developer.api.autodesk.com/aec/graphql
+```
+
+**Required Headers:**
+- `Authorization: Bearer YOUR_ACCESS_TOKEN`
+- `Content-Type: application/json`
+
+**Complete Request Example:**
 ```bash
 curl -X POST 'https://developer.api.autodesk.com/aec/graphql' \
   -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
   -H 'Content-Type: application/json' \
   -d '{
     "query": "{ hubs { results { name id } } }"
+  }'
+```
+
+### Request Body Format
+```json
+{
+  "query": "your GraphQL query here",
+  "variables": {
+    "variableName": "value"
+  },
+  "operationName": "OptionalOperationName"
+}
+```
+
+### Common Request Examples
+
+**Simple Query:**
+```bash
+curl -X POST 'https://developer.api.autodesk.com/aec/graphql' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "{ hubs { results { name id } } }"
+  }'
+```
+
+**Query with Variables:**
+```bash
+curl -X POST 'https://developer.api.autodesk.com/aec/graphql' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "query GetProjects($hubId: ID!) { projects(hubId: $hubId) { results { name id } } }",
+    "variables": {
+      "hubId": "your-hub-id-here"
+    }
   }'
 ```
 
@@ -843,7 +1021,19 @@ Before starting with the tutorials, ensure you have:
 
 In this guide, you will learn how to retrieve a list of all the hubs you have access to.
 
-**Query:**
+**Endpoint:** `POST https://developer.api.autodesk.com/aec/graphql`
+
+**Complete Request:**
+```bash
+curl -X POST 'https://developer.api.autodesk.com/aec/graphql' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "query GetHubs { hubs { pagination { cursor } results { name id } } }"
+  }'
+```
+
+**GraphQL Query:**
 ```graphql
 query GetHubs {
   hubs {
@@ -1554,7 +1744,7 @@ Define the following environment variables: Mac OSX/Linux (Terminal) dotnet rest
 ```
 
 ```
-``` query GetFurnitureProcurement($elementGroupId: ID!, $elementsfilter: String!, $referencefilter: String!) { elements(elementGroupId: $elementGroupId, filter: { query: $elementsfilter}) { pagination { pageSize cursor } results { id name properties (filter: {names: ["Element Name"]}){ results { name value } } referencedBy (name: "Level", filter: { query: $referencefilter}) { results { name properties (filter: {names: [""Family Name"", ""Element Name""]}) { results { name value } } } } } } } ```
+``` query GetFurnitureProcurement($elementGroupId: ID!, $elementsfilter: String!, $referencefilter: String!) { elements(elementGroupId: $elementGroupId, filter: { query: $elementsfilter}) { pagination { pageSize cursor } results { id name properties (filter: {names: ["Element Name"]}){ results { name value } } referencedBy (name: "Level", filter: { query: $referencefilter}) { results { name properties (filter: {names: [""Family Name"", ""Element Name""]}) { results { name value } } } } } } }
 ```
 
 ```
@@ -1751,26 +1941,16 @@ static async Task getHubs() {
     Headers = {
       { "Authorization", "Bearer <<YOUR TOKEN HERE>>" }
     },
-    Content = new StringContent(@"{
-      ""query"": ""query GetHubs {
-        hubs {
-          pagination { cursor }
-          results { name id }
-        }
-      }"",
-      ""variables"": {}
-    }") {
-      Headers = {
-        ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json")
-      }
-    }
-  };
-  
-  using (var response = await client.SendAsync(request)) {
-    response.EnsureSuccessStatusCode();
-    var body = await response.Content.ReadAsStringAsync();
-    Console.WriteLine(body);
-  }
+    Content = new StringContent(
+        JsonSerializer.Serialize(new { query = "{ hubs { results { name id } } }" }),
+        Encoding.UTF8,
+        "application/json"
+    );
+    
+    var response = await client.PostAsync(
+        "https://developer.api.autodesk.com/aec/graphql", 
+        content
+    );
 }
 ```
 
@@ -1939,487 +2119,42 @@ query GetProjects($hubId: String!) {
   }
 }
 ```
+---
 
-## Query Building Patterns
+## Final Endpoint Reminder
 
-### Understanding Object Relationships
+### 🚨 ALWAYS USE THE CORRECT ENDPOINT
 
-The AEC Data Model follows a hierarchical structure:
+**Correct Endpoint:**
 ```
-Hub
-└── Project
-    └── ElementGroup (File)
-        └── Element
-            ├── Properties
-            └── References
+https://developer.api.autodesk.com/aec/graphql
 ```
 
-### Common Query Patterns by Use Case
-
-#### 1. **Exploring Available Data**
-```graphql
-# Get all hubs you have access to
-query ListHubs {
-  hubs {
-    results {
-      id
-      name
-      projects(pagination: { limit: 5 }) {
-        results {
-          id
-          name
-          elementGroups(pagination: { limit: 3 }) {
-            results {
-              id
-              name
-              extractionStatus
-            }
-          }
-        }
-      }
-    }
-  }
-}
+**Complete Request Template:**
+```bash
+curl -X POST 'https://developer.api.autodesk.com/aec/graphql' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{"query": "YOUR_GRAPHQL_QUERY"}'
 ```
 
-#### 2. **Finding Elements by Category**
-```graphql
-# Find all walls in a specific element group
-query FindWalls($elementGroupId: ID!) {
-  elementsByElementGroup(
-    elementGroupId: $elementGroupId
-    filter: { query: "property.name.category==Walls" }
-    pagination: { limit: 100 }
-  ) {
-    pagination { cursor hasNextPage }
-    results {
-      id
-      name
-      properties(filter: { names: ["Length", "Height", "Area", "Base Constraint"] }) {
-        results {
-          name
-          value
-          displayValue
-          definition {
-            units { name symbol }
-          }
-        }
-      }
-    }
-  }
-}
-```
+**Key Points:**
+- Always use POST method
+- Always include `Authorization: Bearer YOUR_ACCESS_TOKEN` header
+- Always use `Content-Type: application/json` header
+- Always send JSON body with "query" field
+- Never use any other endpoint variations
 
-#### 3. **Analyzing Element Properties**
-```graphql
-# Get detailed property information for specific elements
-query AnalyzeElementProperties($elementId: ID!) {
-  elementAtTip(elementId: $elementId) {
-    id
-    name
-    properties(pagination: { limit: 50 }) {
-      results {
-        name
-        value
-        displayValue
-        definition {
-          id
-          name
-          description
-          dataType
-          group
-          units {
-            name
-            symbol
-            abbreviation
-          }
-        }
-      }
-    }
-    references {
-      results {
-        name
-        displayValue
-        value {
-          id
-          name
-          properties(filter: { names: ["Family Name", "Type Name"] }) {
-            results {
-              name
-              value
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
+### Support and Resources
 
-#### 4. **Getting Distinct Property Values**
-```graphql
-# Find all unique family names for doors
-query GetDistinctDoorFamilies($elementGroupId: ID!) {
-  distinctPropertyValuesInElementGroupByName(
-    elementGroupId: $elementGroupId
-    name: "Family Name"
-    filter: { query: "property.name.category==Doors" }
-  ) {
-    results {
-      definition {
-        id
-        name
-      }
-      values {
-        value
-        count
-      }
-    }
-  }
-}
-```
-
-#### 5. **Working with Element Relationships**
-```graphql
-# Find elements and their type relationships
-query ElementsWithTypes($elementGroupId: ID!) {
-  elementsByElementGroup(
-    elementGroupId: $elementGroupId
-    filter: { query: "property.name.category==Walls AND property.name.Element Context==Instance" }
-    pagination: { limit: 50 }
-  ) {
-    results {
-      id
-      name
-      properties(filter: { names: ["Element Name", "Family Name"] }) {
-        results { name value }
-      }
-      references(name: "Type") {
-        results {
-          name
-          value {
-            id
-            name
-            properties(filter: { names: ["Type Name", "Family Name"] }) {
-              results { name value }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-### Field Selection Guidelines
-
-#### **Required Fields to Always Include:**
-- `id` - Always include for unique identification
-- `name` - Human-readable identifier
-- `pagination` fields for collections (`cursor`, `hasNextPage`, `pageSize`)
-
-#### **Commonly Useful Fields:**
-- `alternativeIdentifiers` - For cross-system integration
-- `metadata.createdOn` - For data provenance
-- `extractionStatus` - For ElementGroups to ensure data is ready
-- `definition` for properties - Provides context about data types and units
-
-#### **Performance Considerations:**
-- Use `filter` parameters to reduce data transfer
-- Limit `pagination.limit` to reasonable values (50-200 items)
-- Request only needed property names using `filter: { names: [...] }`
-- Use `includeReferencesProperties` selectively ("Type" or "Instance")
-
-### Error-Prone Field Patterns to Avoid
-
-❌ **Don't do this:**
-```graphql
-# Requesting all properties without filtering
-query BadQuery($elementId: ID!) {
-  elementAtTip(elementId: $elementId) {
-    properties {  # This could return hundreds of properties
-      results {
-        name
-        value
-        definition {
-          # All definition fields - potentially expensive
-        }
-      }
-    }
-  }
-}
-```
-
-✅ **Do this instead:**
-```graphql
-# Filtered and targeted property requests
-query GoodQuery($elementId: ID!) {
-  elementAtTip(elementId: $elementId) {
-    id
-    name
-    properties(
-      filter: { names: ["Length", "Width", "Height", "Area"] }
-      pagination: { limit: 20 }
-    ) {
-      results {
-        name
-        value
-        displayValue
-        definition {
-          units {
-            name
-            symbol
-          }
-        }
-      }
-    }
-  }
-}
-```
+- **Official Documentation**: [Autodesk Developer Portal](https://aps.autodesk.com/)
+- **API Status**: Monitor service status and updates
+- **Community Forums**: Connect with other developers
+- **Sample Code**: Complete working examples available on GitHub
 
 ---
 
-## Field Discovery and Introspection
-
-### Using GraphQL Introspection to Discover Fields
-
-GraphQL provides built-in introspection capabilities to discover available fields and types:
-
-#### **Discover All Available Types:**
-```graphql
-query DiscoverTypes {
-  __schema {
-    types {
-      name
-      kind
-      description
-      fields {
-        name
-        type {
-          name
-          kind
-        }
-        description
-      }
-    }
-  }
-}
-```
-
-#### **Explore a Specific Type:**
-```graphql
-query ExploreElementType {
-  __type(name: "Element") {
-    name
-    description
-    fields {
-      name
-      type {
-        name
-        kind
-        ofType {
-          name
-          kind
-        }
-      }
-      description
-      args {
-        name
-        type {
-          name
-          kind
-        }
-        defaultValue
-      }
-    }
-  }
-}
-```
-
-#### **Find Available Query Operations:**
-```graphql
-query DiscoverQueries {
-  __schema {
-    queryType {
-      fields {
-        name
-        description
-        type {
-          name
-          kind
-        }
-        args {
-          name
-          type {
-            name
-            kind
-          }
-          description
-        }
-      }
-    }
-  }
-}
-```
-
-### Field Documentation Quick Reference
-
-| Object Type | Key Fields | Description |
-|-------------|------------|-------------|
-| **Hub** | `id`, `name`, `projects`, `alternativeIdentifiers`, `metadata` | Top-level organizational unit |
-| **Project** | `id`, `name`, `hub`, `elementGroups`, `folders`, `alternativeIdentifiers`, `metadata` | Container for related data |
-| **ElementGroup** | `id`, `name`, `project`, `elements`, `properties`, `extractionStatus`, `alternativeIdentifiers`, `metadata` | Collection of elements (typically a file) |
-| **Element** | `id`, `name`, `elementGroup`, `properties`, `references`, `referencedBy`, `alternativeIdentifiers` | Individual AEC object |
-| **Property** | `name`, `value`, `displayValue`, `definition` | Property of an element |
-| **PropertyDefinition** | `id`, `name`, `description`, `dataType`, `units`, `group` | Defines structure of a property |
-| **Reference** | `name`, `displayValue`, `value` | Relationship between elements |
-
-### Common Field Combinations
-
-#### **Basic Object Information:**
-```graphql
-{
-  id
-  name
-  alternativeIdentifiers {
-    # Choose appropriate identifiers based on object type
-  }
-  metadata {
-    createdOn
-    modifiedOn
-  }
-}
-```
-
-#### **Element with Essential Properties:**
-```graphql
-{
-  id
-  name
-  properties(filter: { names: ["category", "Family Name", "Type Name"] }) {
-    results {
-      name
-      value
-      displayValue
-    }
-  }
-}
-```
-
-#### **Element with Geometric Properties:**
-```graphql
-{
-  id
-  name
-  properties(filter: { names: ["Length", "Width", "Height", "Area", "Volume"] }) {
-    results {
-      name
-      value
-      displayValue
-      definition {
-        units {
-          name
-          symbol
-        }
-      }
-    }
-  }
-}
-```
-
-#### **Element with Material Information:**
-```graphql
-{
-  id
-  name
-  properties(filter: { names: ["Material", "Structural Material", "Finish"] }) {
-    results {
-      name
-      value
-      displayValue
-    }
-  }
-  references(name: "Material") {
-    results {
-      name
-      value {
-        id
-        name
-        properties(filter: { names: ["Material Class", "Thermal Conductivity"] }) {
-          results {
-            name
-            value
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-### Field Validation and Error Handling
-
-#### **Check Field Existence:**
-```graphql
-query ValidateFields($elementId: ID!) {
-  elementAtTip(elementId: $elementId) {
-    id
-    name
-    properties(filter: { names: ["Length"] }) {
-      results {
-        name
-        value
-        displayValue
-        definition {
-          id
-          name
-          dataType
-        }
-      }
-    }
-  }
-}
-```
-
-If a field doesn't exist, GraphQL will return an error. Always check the response for errors:
-
-```json
-{
-  "errors": [
-    {
-      "message": "Cannot query field 'nonExistentField' on type 'Element'",
-      "locations": [{"line": 4, "column": 5}],
-      "extensions": {
-        "code": "GRAPHQL_VALIDATION_FAILED"
-      }
-    }
-  ]
-}
-```
-
-#### **Safe Field Access Pattern:**
-```graphql
-# Use fragments to handle optional fields
-fragment SafeElementFields on Element {
-  id
-  name
-  ... on Element {
-    properties(filter: { names: ["Length"] }) {
-      results {
-        name
-        value
-        displayValue
-      }
-    }
-  }
-}
-
-query SafeQuery($elementId: ID!) {
-  elementAtTip(elementId: $elementId) {
-    ...SafeElementFields
-  }
-}
-```
-
----
+*Document Version: 2.1*  
+*Last Updated: 2025-01-08*
+*Endpoint: https://developer.api.autodesk.com/aec/graphql*
 
